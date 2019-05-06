@@ -1,7 +1,7 @@
 package: JAliEn
 version: "%(tag_basename)s"
-tag: "1.0.3"
-source: https://gitlab.cern.ch/jalien/jalien.git
+tag: "master"
+source: https://gitlab.cern.ch/vyurchen/jalien.git
 requires:
  - JDK
  - XRootD

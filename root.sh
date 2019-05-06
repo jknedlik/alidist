@@ -1,7 +1,7 @@
 package: ROOT
 version: "%(tag_basename)s"
-tag: v5-34-30-alice10
-source: https://github.com/alisw/root
+tag: master
+source: https://github.com/root-project/root
 requires:
   - AliEn-Runtime:(?!.*ppc64)
   - GSL
@@ -148,6 +148,11 @@ else
             pythia6 roofit soversion vdt ${CXX11:+cxx11} ${CXX14:+cxx14} ${CXX17:+cxx17}
             ${XROOTD_ROOT:+xrootd} ${ALIEN_RUNTIME_ROOT:+alien monalisa} ${ROOT_HAS_PYTHON:+python}
             ${ARROW_VERSION:+arrow}"
+  FEATURES="builtin_pcre mathmore xml ssl opengl minuit2 http fortran
+          pythia6 roofit soversion vdt  ${CXX14:+cxx14} ${CXX17:+cxx17}
+           ${XROOTD_ROOT:+xrootd} ${ALIEN_RUNTIME_ROOT:+alien monalisa} ${ROOT_HAS_PYTHON:+python}
+           ${ARROW_VERSION:+arrow}"
+
   NO_FEATURES="root7 ${LZMA_VERSION:+builtin_lzma} ${LIBPNG_VERSION:+builtin_png} krb5 gviz
                ${ROOT_HAS_NO_PYTHON:+python} builtin_davix davix"
 
@@ -166,6 +171,7 @@ done
 for FEATURE in $NO_FEATURES; do
   bin/root-config --has-$FEATURE | grep -q no
 done
+echo ive been here
 
 if [[ $ALICE_DAQ ]]; then
   make ${JOBS+-j$JOBS}

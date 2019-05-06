@@ -1,9 +1,10 @@
 package: JAliEn-ROOT
-version: "%(tag_basename)s"
-tag: "integration"
-source: https://gitlab.cern.ch/dberzano/jalien-root
+version: master
+tag: master
+source: https://gitlab.cern.ch/jknedlik/jalien-root.git
 requires:
   - ROOT
+  - XRootD 
 build_requires:
   - libwebsockets
   - json-c
@@ -19,6 +20,7 @@ esac
 cmake $SOURCEDIR                                         \
       -DCMAKE_INSTALL_PREFIX="$INSTALLROOT"              \
       -DROOTSYS="$ROOTSYS"                               \
+      -DXROOTDSYS="$XROOTD_ROOT"                         \
       -DJSONC="$JSON_C_ROOT"                             \
        ${OPENSSL_ROOT:+-DOPENSSL_ROOT_DIR=$OPENSSL_ROOT} \
       -DLWS="$LIBWEBSOCKETS_ROOT"
